@@ -39,7 +39,7 @@ public extension ProgramError {
             switch runtimeError.type {
             case .fileAccessRestricted:
                 return .fileAccess
-            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont,
+            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont, .unknownCamera,
                  .typeMismatch, .forwardReference, .unexpectedArgument,
                  .missingArgument, .unusedValue, .assertionFailure,
                  .fileNotFound, .fileTimedOut, .fileTypeMismatch,
@@ -105,7 +105,7 @@ public extension ProgramError {
                     return baseURL
                 }
                 return error.shapeFileURL(relativeTo: url)
-            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont,
+            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont, .unknownCamera,
                  .typeMismatch, .forwardReference, .unexpectedArgument,
                  .missingArgument, .unusedValue, .assertionFailure,
                  .fileNotFound, .fileTimedOut, .fileAccessRestricted,
@@ -124,7 +124,7 @@ public extension ProgramError {
             switch runtimeError.type {
             case let .importError(error, _, _):
                 return error.underlyingError
-            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont,
+            case .unknownSymbol, .unknownMember, .invalidIndex, .unknownFont, .unknownCamera,
                  .typeMismatch, .forwardReference, .unexpectedArgument, .missingArgument,
                  .unusedValue, .assertionFailure, .fileNotFound, .fileTimedOut,
                  .fileAccessRestricted, .fileTypeMismatch, .fileParsingError,
