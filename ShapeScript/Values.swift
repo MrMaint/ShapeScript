@@ -100,7 +100,7 @@ extension RangeValue: Sequence {
     }
 
     var stride: StrideThrough<Double> {
-        let end = self.end + (step ?? 1 > 0 ? 1 : -1) * 0.0000001
+        let end = self.end + (step ?? 1 > 0 ? 1 : -1) * Value.epsilon
         return Swift.stride(from: start, through: end, by: step ?? 1)
     }
 

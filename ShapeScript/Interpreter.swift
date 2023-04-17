@@ -1147,7 +1147,7 @@ extension Statement {
                         in: context
                     )
                     let type = value.type
-                    if pattern.as(type) != value {
+                    if pattern.as(type)?.isAlmostEqual(to: value) != true {
                         switch pattern {
                         case let .range(range) where type == .number:
                             if !range.contains(value.doubleValue) {
@@ -1155,7 +1155,7 @@ extension Statement {
                             }
                         case let .tuple(values):
                             if !values.contains(where: {
-                                $0.as(type) == value
+                                $0.as(type)?.isAlmostEqual(to: value) == true
                             }) {
                                 continue
                             }
@@ -1361,11 +1361,11 @@ extension Expression {
         case let .infix(lhs, .equal, rhs):
             let lhs = try lhs.evaluate(in: context)
             let rhs = try rhs.evaluate(in: context)
-            return .boolean(lhs.value == rhs.value)
+            return .boolean(lhs.isAlmostEqual(to: rhs))
         case let .infix(lhs, .unequal, rhs):
             let lhs = try lhs.evaluate(in: context)
             let rhs = try rhs.evaluate(in: context)
-            return .boolean(lhs.value != rhs.value)
+            return .boolean(!lhs.isAlmostEqual(to: rhs))
         case let .infix(lhs, .and, rhs):
             return try .boolean(lhs.evaluate(
                 as: .boolean,
