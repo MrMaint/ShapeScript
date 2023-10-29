@@ -512,6 +512,7 @@ extension Value {
                 transform: context?.transform ?? .identity,
                 material: .default, // not used for paths
                 smoothing: nil,
+                wrapMode: nil,
                 children: [],
                 sourceLocation: context?.sourceLocation
             ))

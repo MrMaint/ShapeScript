@@ -96,6 +96,7 @@ extension Document {
             transform: geometry.transform,
             material: .default,
             smoothing: nil,
+            wrapMode: nil,
             children: [],
             sourceLocation: nil
         )
