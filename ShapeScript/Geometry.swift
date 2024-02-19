@@ -500,7 +500,7 @@ private extension Geometry {
         case .group, .path, .camera, .light:
             mesh = .empty
         case let .cone(segments):
-            mesh = .cone(slices: segments)
+            mesh = .cone(slices: segments, poleDetail: smoothing == .zero ? 0 : nil)
         case let .cylinder(segments):
             mesh = .cylinder(slices: segments)
         case let .sphere(segments):
